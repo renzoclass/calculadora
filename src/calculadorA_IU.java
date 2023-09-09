@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Labor
@@ -34,9 +33,9 @@ public class calculadorA_IU extends javax.swing.JFrame {
         txtNRO1 = new javax.swing.JTextField();
         txtNRO2 = new javax.swing.JTextField();
         btnSUMAR = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRESTAR = new javax.swing.JButton();
+        btnDIVIDIR = new javax.swing.JButton();
+        btnMULTIPLICAR = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,11 +50,26 @@ public class calculadorA_IU extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("RESTAR");
+        btnRESTAR.setText("RESTAR");
+        btnRESTAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRESTARActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("DIVIDIR");
+        btnDIVIDIR.setText("DIVIDIR");
+        btnDIVIDIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDIVIDIRActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("MULTIPLICAR");
+        btnMULTIPLICAR.setText("MULTIPLICAR");
+        btnMULTIPLICAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMULTIPLICARActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,26 +77,25 @@ public class calculadorA_IU extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtNRO1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSUMAR, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtNRO2))))
-                .addContainerGap())
+                                .addComponent(btnRESTAR, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnMULTIPLICAR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnDIVIDIR, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNRO2, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNRO1)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,11 +110,11 @@ public class calculadorA_IU extends javax.swing.JFrame {
                     .addComponent(txtNRO2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSUMAR)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnRESTAR)
+                    .addComponent(btnDIVIDIR)
+                    .addComponent(btnMULTIPLICAR)
+                    .addComponent(btnSUMAR))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,16 +122,49 @@ public class calculadorA_IU extends javax.swing.JFrame {
 
     private void btnSUMARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSUMARActionPerformed
         // TODO add your handling code here:
-         double nro1 = Double.parseDouble(txtNRO1.getText());
+        double nro1 = Double.parseDouble(txtNRO1.getText());
         double nro2 = Double.parseDouble(txtNRO2.getText());
 
         double suma = nro1 + nro2;
 
         JOptionPane.showMessageDialog(this, "La suma es: " + suma);
-        
+
         txtNRO1.setText("");
         txtNRO2.setText("");
     }//GEN-LAST:event_btnSUMARActionPerformed
+
+    private void btnRESTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRESTARActionPerformed
+        // TODO add your handling code here:
+        double nro1 = Double.parseDouble(txtNRO1.getText());
+        double nro2 = Double.parseDouble(txtNRO2.getText());
+
+        double resta = nro1 - nro2;
+
+        JOptionPane.showMessageDialog(this, "La resta es: " + resta);
+
+    }//GEN-LAST:event_btnRESTARActionPerformed
+
+    private void btnMULTIPLICARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMULTIPLICARActionPerformed
+        // TODO add your handling code here:
+        double nro1 = Double.parseDouble(txtNRO1.getText());
+        double nro2 = Double.parseDouble(txtNRO2.getText());
+
+        double multiplicacion = nro1 * nro2;
+
+        JOptionPane.showMessageDialog(this, "La multiplicacion es: " + multiplicacion);
+
+    }//GEN-LAST:event_btnMULTIPLICARActionPerformed
+
+    private void btnDIVIDIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDIVIDIRActionPerformed
+        // TODO add your handling code here:
+        double nro1 = Double.parseDouble(txtNRO1.getText());
+        double nro2 = Double.parseDouble(txtNRO2.getText());
+
+        double divicion = nro1 / nro2;
+
+        JOptionPane.showMessageDialog(this, "La divicion es: " + divicion);
+
+    }//GEN-LAST:event_btnDIVIDIRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,10 +203,10 @@ public class calculadorA_IU extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDIVIDIR;
+    private javax.swing.JButton btnMULTIPLICAR;
+    private javax.swing.JButton btnRESTAR;
     private javax.swing.JButton btnSUMAR;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txtNRO1;
